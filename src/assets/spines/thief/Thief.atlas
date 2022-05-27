@@ -1,0 +1,132 @@
+
+Thief.png
+size: 1274,238
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+HEAD
+  rotate: true
+  xy: 1151, 63
+  size: 173, 121
+  orig: 173, 121
+  offset: 0, 0
+  index: -1
+HEAD_SCARED
+  rotate: false
+  xy: 985, 102
+  size: 164, 134
+  orig: 164, 134
+  offset: 0, 0
+  index: -1
+L_ARM
+  rotate: false
+  xy: 330, 17
+  size: 107, 56
+  orig: 107, 56
+  offset: 0, 0
+  index: -1
+L_FOOT
+  rotate: true
+  xy: 814, 2
+  size: 80, 96
+  orig: 80, 96
+  offset: 0, 0
+  index: -1
+L_ForeArm
+  rotate: true
+  xy: 252, 7
+  size: 83, 76
+  orig: 83, 76
+  offset: 0, 0
+  index: -1
+L_HAND_1
+  rotate: false
+  xy: 673, 4
+  size: 73, 53
+  orig: 73, 53
+  offset: 0, 0
+  index: -1
+L_HAND_2
+  rotate: false
+  xy: 439, 16
+  size: 76, 57
+  orig: 76, 57
+  offset: 0, 0
+  index: -1
+L_LEG
+  rotate: false
+  xy: 145, 20
+  size: 105, 70
+  orig: 105, 70
+  offset: 0, 0
+  index: -1
+R_ARM
+  rotate: false
+  xy: 2, 13
+  size: 141, 77
+  orig: 141, 77
+  offset: 0, 0
+  index: -1
+R_FOOT
+  rotate: true
+  xy: 912, 2
+  size: 80, 93
+  orig: 80, 93
+  offset: 0, 0
+  index: -1
+R_FOREARM
+  rotate: true
+  xy: 1108, 2
+  size: 59, 107
+  orig: 59, 107
+  offset: 0, 0
+  index: -1
+R_HAND_1
+  rotate: false
+  xy: 595, 2
+  size: 76, 55
+  orig: 76, 55
+  offset: 0, 0
+  index: -1
+R_HAND_2
+  rotate: false
+  xy: 517, 16
+  size: 76, 57
+  orig: 76, 57
+  offset: 0, 0
+  index: -1
+R_LEG
+  rotate: false
+  xy: 1007, 5
+  size: 99, 95
+  orig: 99, 95
+  offset: 0, 0
+  index: -1
+TAIL
+  rotate: true
+  xy: 331, 75
+  size: 161, 264
+  orig: 161, 264
+  offset: 0, 0
+  index: -1
+TORSO1
+  rotate: false
+  xy: 814, 84
+  size: 169, 152
+  orig: 169, 152
+  offset: 0, 0
+  index: -1
+TORSO2
+  rotate: false
+  xy: 597, 59
+  size: 215, 177
+  orig: 215, 177
+  offset: 0, 0
+  index: -1
+Tail_SCARED
+  rotate: true
+  xy: 2, 92
+  size: 144, 327
+  orig: 144, 327
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,82 @@
+{
+	"textures": [
+		{
+			"image": "items.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 660,
+				"h": 840
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "stash-box-silver.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 576,
+						"h": 348
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 576,
+						"h": 348
+					},
+					"frame": {
+						"x": 3,
+						"y": 3,
+						"w": 576,
+						"h": 348
+					}
+				},
+				{
+					"filename": "munchie.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 432,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 0,
+						"w": 336,
+						"h": 480
+					},
+					"frame": {
+						"x": 3,
+						"y": 357,
+						"w": 336,
+						"h": 480
+					}
+				},
+				{
+					"filename": "water.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 432,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 60,
+						"y": 0,
+						"w": 312,
+						"h": 480
+					},
+					"frame": {
+						"x": 345,
+						"y": 357,
+						"w": 312,
+						"h": 480
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://github.com/odrick/free-tex-packer-core",
+		"version": "0.3.4"
+	}
+}

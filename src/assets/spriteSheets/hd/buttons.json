@@ -1,0 +1,292 @@
+{
+	"textures": [
+		{
+			"image": "buttons.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2091,
+				"h": 2094
+			},
+			"scale": 3,
+			"frames": [
+				{
+					"filename": "bkg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 990,
+						"h": 990
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 990,
+						"h": 990
+					},
+					"frame": {
+						"x": 9,
+						"y": 9,
+						"w": 990,
+						"h": 990
+					}
+				},
+				{
+					"filename": "blue/over.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 345,
+						"h": 684
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 330,
+						"h": 675
+					},
+					"frame": {
+						"x": 1017,
+						"y": 9,
+						"w": 330,
+						"h": 675
+					}
+				},
+				{
+					"filename": "close_btn_icon.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 582,
+						"h": 624
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 6,
+						"w": 576,
+						"h": 618
+					},
+					"frame": {
+						"x": 9,
+						"y": 1017,
+						"w": 576,
+						"h": 618
+					}
+				},
+				{
+					"filename": "blue/disabled.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 285,
+						"h": 612
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 285,
+						"h": 612
+					},
+					"frame": {
+						"x": 603,
+						"y": 1017,
+						"w": 285,
+						"h": 612
+					}
+				},
+				{
+					"filename": "blue/down.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 285,
+						"h": 612
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 285,
+						"h": 612
+					},
+					"frame": {
+						"x": 906,
+						"y": 1017,
+						"w": 285,
+						"h": 612
+					}
+				},
+				{
+					"filename": "blue/up.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 285,
+						"h": 612
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 285,
+						"h": 612
+					},
+					"frame": {
+						"x": 1365,
+						"y": 9,
+						"w": 285,
+						"h": 612
+					}
+				},
+				{
+					"filename": "sell/disabled.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 432,
+						"h": 432
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 429,
+						"h": 432
+					},
+					"frame": {
+						"x": 1209,
+						"y": 702,
+						"w": 429,
+						"h": 432
+					}
+				},
+				{
+					"filename": "sell/down.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 432,
+						"h": 432
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 432,
+						"h": 432
+					},
+					"frame": {
+						"x": 1209,
+						"y": 1152,
+						"w": 432,
+						"h": 432
+					}
+				},
+				{
+					"filename": "sell/over.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 432,
+						"h": 432
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 432,
+						"h": 432
+					},
+					"frame": {
+						"x": 9,
+						"y": 1653,
+						"w": 432,
+						"h": 432
+					}
+				},
+				{
+					"filename": "sell/up.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 432,
+						"h": 432
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 432,
+						"h": 432
+					},
+					"frame": {
+						"x": 459,
+						"y": 1653,
+						"w": 432,
+						"h": 432
+					}
+				},
+				{
+					"filename": "exit_full_screen.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 450,
+						"h": 450
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 18,
+						"w": 414,
+						"h": 414
+					},
+					"frame": {
+						"x": 909,
+						"y": 1647,
+						"w": 414,
+						"h": 414
+					}
+				},
+				{
+					"filename": "full-screen-icon.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 450,
+						"h": 450
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 18,
+						"w": 414,
+						"h": 414
+					},
+					"frame": {
+						"x": 1668,
+						"y": 9,
+						"w": 414,
+						"h": 414
+					}
+				},
+				{
+					"filename": "sell-checkmark.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 414,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 414,
+						"h": 324
+					},
+					"frame": {
+						"x": 1668,
+						"y": 441,
+						"w": 414,
+						"h": 324
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://github.com/odrick/free-tex-packer-core",
+		"version": "0.3.4"
+	}
+}
