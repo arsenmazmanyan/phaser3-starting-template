@@ -2,14 +2,16 @@ import { assets } from "../../assets/assetsNames/assets";
 import { audioAssets } from "../../assets/assetsNames/audio";
 import { spines } from "../../assets/assetsNames/spines";
 import { spriteSheets } from "../../assets/assetsNames/spriteSheets";
+import { SceneNames } from "../enums/Scenes";
 
 export default class PreloadScene extends Phaser.Scene {
     public constructor() {
-        super({ key: "PreloadScene" });
+        super({ key: SceneNames.Preload });
         // this.init();
     }
 
     private preload(): void {
+        console.log("Starting Asset loading");
         this.loadAssets();
         this.loadSpriteSheets();
         this.loadAudio();
@@ -17,11 +19,12 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     private init(): void {
-        console.warn("Hello Preload SCENE");
+        //
     }
 
     private create(): void {
-        this.scene.start("BootScene");
+        console.log("Asset loading is completed");
+        this.scene.start(SceneNames.Main);
     }
 
     private loadAssets(): void {

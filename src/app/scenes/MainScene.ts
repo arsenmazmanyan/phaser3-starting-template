@@ -1,20 +1,34 @@
-import { NinePatchButton } from "../buttons/NinePatchButton";
-import { getSellButtonConfig } from "../configs/SellBtnConfig";
+import * as Stats from "stats.js";
+import { SceneNames } from "../enums/Scenes";
+import { ForepartView } from "../views/ForepartView";
+import { GameView } from "../views/GameView";
+import { UIView } from "../views/UIView";
 
 export default class MainScene extends Phaser.Scene {
+    private gameView: GameView;
+    private uiView: UIView;
+    private forepartView: ForepartView;
     public constructor() {
-        super({ key: "MainScene" });
+        super({ key: SceneNames.Main });
         // this.init();
     }
 
     private init(): void {
-        console.warn("Hello Main SCENE");
-        this.add.sprite(200, 150, "buttons", "close_btn_icon.png");
-        const spine = this.add.spine(800, 800, "thief");
-        spine.play("Running", true);
+        this.add.existing((this.gameView = new GameView(this)));
+        this.add.existing((this.uiView = new UIView(this)));
+        this.add.existing((this.forepartView = new ForepartView(this)));
+        this.initStatJS();
+    }
 
-        const btn = new NinePatchButton(this, getSellButtonConfig());
-        btn.setPosition(400, 400);
-        this.add.existing(btn);
+    private initStatJS(): void {
+        const stats = new Stats();
+        stats.showPanel(0);
+        const update = (): void => {
+            stats.begin();
+            stats.end();
+            window.requestAnimationFrame(update);
+        };
+        update();
+        document.body.appendChild(stats.dom);
     }
 }

@@ -1,5 +1,4 @@
 import { NinePatch } from "@koreez/phaser3-ninepatch";
-import { StateConfig } from "../configs/NinePatchButtonConfig";
 import { makeNinePatch } from "../configs/NinePatchConfig";
 import { ButtonStateNames } from "../enums/ButtonStateNames";
 
@@ -14,7 +13,8 @@ export class ButtonState extends Phaser.GameObjects.Container {
     }
 
     public getBounds(): Phaser.Geom.Rectangle {
-        return this.bkg.getBounds();
+        const { width, height } = this.bkg.getBounds();
+        return new Phaser.Geom.Rectangle(0, 0, width, height);
     }
 
     public updateLabel(label: string): void {

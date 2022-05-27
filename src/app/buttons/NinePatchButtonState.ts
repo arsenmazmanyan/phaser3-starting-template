@@ -1,5 +1,4 @@
 import { NinePatch } from "@koreez/phaser3-ninepatch";
-import { StateConfig } from "../configs/NinePatchButtonConfig";
 import { makeNinePatch } from "../configs/NinePatchConfig";
 import { ButtonStateNames } from "../enums/ButtonStateNames";
 

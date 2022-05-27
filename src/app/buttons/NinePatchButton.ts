@@ -1,4 +1,3 @@
-import { StateConfig } from "../configs/NinePatchButtonConfig";
 import { ButtonStateNames } from "../enums/ButtonStateNames";
 import { ButtonBase } from "./ButtonBase";
 import { ButtonState } from "./ButtonState";

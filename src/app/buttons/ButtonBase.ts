@@ -1,4 +1,3 @@
-import { ButtonHitAreaConfig } from "../configs/NinePatchButtonConfig";
 import { ButtonEvents } from "../enums/ButtonEvents";
 import { ButtonStateNames } from "../enums/ButtonStateNames";
 import { ButtonState } from "./ButtonState";
@@ -21,6 +20,13 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
 
     public get isDisabled(): boolean {
         return this.activeState === ButtonStateNames.Disabled;
+    }
+
+    public getBounds(): Phaser.Geom.Rectangle {
+        if (!this.isDisabled) {
+            return this.states.up.getBounds();
+        }
+        return this.states.disabled ? this.states.disabled.getBounds() : this.states.up.getBounds();
     }
 
     public updateLabel(label: string): void {
@@ -68,7 +74,7 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
             down: down && this.initState(down, ButtonStateNames.Down),
             disabled: disabled && this.initState(disabled, ButtonStateNames.Disabled),
         };
-
+        this.setButtonSize();
         this.setActiveState(ButtonStateNames.Up);
         this.isInteractive = true;
     }
@@ -115,5 +121,10 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
     private onPointerOutActions(): void {
         this.setActiveState(ButtonStateNames.Up);
         this.emit(ButtonEvents.Out);
+    }
+
+    private setButtonSize(): void {
+        const { width, height } = this.getBounds();
+        this.setSize(width, height);
     }
 }

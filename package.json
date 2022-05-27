@@ -35,6 +35,7 @@
         "free-tex-packer-core": "^0.3.4",
         "html-webpack-plugin": "^5.5.0",
         "prettier": "^2.6.2",
+        "stats.js": "^0.17.0",
         "style-loader": "^3.3.1",
         "ts-loader": "^9.3.0",
         "typescript": "^4.7.2",

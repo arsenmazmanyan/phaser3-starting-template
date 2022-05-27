@@ -1,5 +1,3 @@
-import { SpriteConfig } from "./NinePatchButtonConfig";
-
 export const getSolanaBtnIconConfig = (enabled: boolean): SpriteConfig => {
     return {
         texture: "buttons",

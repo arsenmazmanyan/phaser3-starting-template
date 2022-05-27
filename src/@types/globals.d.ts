@@ -16,3 +16,38 @@ type SpineFiles = {
     atlasURL: string;
     preMultipliedAlpha?: boolean;
 };
+
+type SpriteConfig = {
+    x: number;
+    y: number;
+    texture: string | Phaser.Textures.Texture;
+    frame?: string | number | undefined;
+    scaleX?: number;
+    scaleY?: number;
+};
+
+type ButtonHitAreaConfig = {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+};
+
+type StateConfig = {
+    bkg: INinePatchConfig;
+    tint?: number;
+    text?: TextConfig;
+    icon?: SpriteConfig;
+};
+
+type ButtonStates = {
+    up: StateConfig;
+    over?: StateConfig;
+    down?: StateConfig;
+    disabled?: StateConfig;
+};
+
+type NinePatchButtonConfig = {
+    states: ButtonStates;
+    hitArea?: ButtonHitAreaConfig;
+};

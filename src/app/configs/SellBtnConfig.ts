@@ -1,75 +1,41 @@
 import { INinePatchConfig } from "@koreez/phaser3-ninepatch";
 import { getSellCheckMarkIconBtnIconConfig } from "./IconConfig";
-import { NinePatchButtonConfig } from "./NinePatchButtonConfig";
 import { getSellBtnPatchesConfig } from "./NinePatchConfig";
 import { getSellBtnTextConfig } from "./TextConfig";
 
-const getSellBtnNinePatchConfig = (state: string, width: number, height: number): INinePatchConfig => {
+const getSellBtnNinePatchConfig = (state: string): INinePatchConfig => {
     return {
         x: 0,
         y: 0,
-        width,
-        height,
+        width: 540,
+        height: 144,
         ...getSellBtnPatchesConfig(state),
     };
 };
-
-export function getBuyButtonConfig(): NinePatchButtonConfig {
-    const enabledText = getSellBtnTextConfig(true);
-    const disabledText = getSellBtnTextConfig(false);
-    const icon = getSellCheckMarkIconBtnIconConfig(-72);
-    const width = 148;
-    const height = 48;
-    return {
-        states: {
-            up: {
-                bkg: getSellBtnNinePatchConfig("up", width, height),
-                text: enabledText,
-                icon,
-            },
-            over: {
-                bkg: getSellBtnNinePatchConfig("over", width, height),
-                text: enabledText,
-                icon,
-            },
-            down: {
-                bkg: getSellBtnNinePatchConfig("down", width, height),
-                text: enabledText,
-                icon,
-            },
-            disabled: {
-                bkg: getSellBtnNinePatchConfig("disabled", width, height),
-                text: disabledText,
-            },
-        },
-    };
-}
 
 export function getSellButtonConfig(): NinePatchButtonConfig {
     const enabledText = getSellBtnTextConfig(true);
     const disabledText = getSellBtnTextConfig(false);
     const icon = getSellCheckMarkIconBtnIconConfig(-140);
-    const width = 540;
-    const height = 144;
     return {
         states: {
             up: {
-                bkg: getSellBtnNinePatchConfig("up", width, height),
+                bkg: getSellBtnNinePatchConfig("up"),
                 text: enabledText,
                 icon,
             },
             over: {
-                bkg: getSellBtnNinePatchConfig("over", width, height),
+                bkg: getSellBtnNinePatchConfig("over"),
                 text: enabledText,
                 icon,
             },
             down: {
-                bkg: getSellBtnNinePatchConfig("down", width, height),
+                bkg: getSellBtnNinePatchConfig("down"),
                 text: enabledText,
                 icon,
             },
             disabled: {
-                bkg: getSellBtnNinePatchConfig("disabled", width, height),
+                bkg: getSellBtnNinePatchConfig("disabled"),
                 text: disabledText,
             },
         },

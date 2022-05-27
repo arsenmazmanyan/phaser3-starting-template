@@ -1,6 +1,11 @@
+import { NinePatchButton } from "../buttons/NinePatchButton";
+import { getSellButtonConfig } from "../configs/SellBtnConfig";
+import { ButtonEvents } from "../enums/ButtonEvents";
+import { SceneNames } from "../enums/Scenes";
+
 export default class BootScene extends Phaser.Scene {
     public constructor() {
-        super({ key: "BootScene" });
+        super({ key: SceneNames.Boot });
     }
 
     public preload(): void {
@@ -8,24 +13,19 @@ export default class BootScene extends Phaser.Scene {
     }
 
     private init(): void {
-        console.warn("INITIALIZING BOOT SCENE");
-
-        const { width, height } = this.scale.displaySize;
-
-        const btn = this.add.sprite(0, 0, "buttons", "bkg.png");
-        btn.setOrigin(0.5);
-        btn.setPosition(width - btn.width / 2, height - btn.height / 2);
-        btn.setInteractive();
-        btn.on("pointerdown", () => {
-            this.scene.start("MainScene");
+        const { width, height } = this.scale.gameSize;
+        const btn = new NinePatchButton(this, getSellButtonConfig());
+        btn.setPosition(width / 2, height / 2);
+        this.add.existing(btn);
+        btn.on(ButtonEvents.Up, () => {
+            btn.setInteractivity(false);
+            setTimeout(() => {
+                this.scene.start(SceneNames.Main);
+            }, 2000);
         });
-
-        const txt = this.add.text(0, 0, "Click this green btn above\nto go to main scene", { fontSize: "42px" });
-        txt.setOrigin(0.5);
-        txt.setPosition(width - 180, height + 200);
     }
 
     private create(): void {
-        this.scene.start("MainScene");
+        // this.scene.start("MainScene");
     }
 }
