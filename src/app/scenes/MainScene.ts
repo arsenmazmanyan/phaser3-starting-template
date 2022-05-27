@@ -26,7 +26,7 @@ export default class MainScene extends Phaser.Scene {
         const update = (): void => {
             stats.begin();
             stats.end();
-            window.requestAnimationFrame(update);
+            requestAnimationFrame(update);
         };
         update();
         document.body.appendChild(stats.dom);

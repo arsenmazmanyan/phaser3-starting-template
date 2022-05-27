@@ -7,7 +7,6 @@ import { SceneNames } from "../enums/Scenes";
 export default class PreloadScene extends Phaser.Scene {
     public constructor() {
         super({ key: SceneNames.Preload });
-        // this.init();
     }
 
     private preload(): void {
