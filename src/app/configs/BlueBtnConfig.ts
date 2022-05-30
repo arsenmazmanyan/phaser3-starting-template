@@ -1,5 +1,5 @@
 import { INinePatchConfig } from "@koreez/phaser3-ninepatch";
-import { getBlueBtnPatchesConfig } from "./NinePatchConfig";
+import { getColoredBtnPatchesConfig } from "./NinePatchConfig";
 import { getBlueBtnTextConfig } from "./TextConfig";
 
 export const getBlueBtnNinePatchConfig = (state: string): INinePatchConfig => {
@@ -8,7 +8,7 @@ export const getBlueBtnNinePatchConfig = (state: string): INinePatchConfig => {
         y: 0,
         width: 400,
         height: 205,
-        ...getBlueBtnPatchesConfig(state),
+        ...getColoredBtnPatchesConfig("blue", state),
     };
 };
 

@@ -1,4 +1,4 @@
-import { NinePatchButton } from "../buttons/NinePatchButton";
+import { Button } from "../buttons/Button";
 import { getSellButtonConfig } from "../configs/SellBtnConfig";
 import { ButtonEvents } from "../enums/ButtonEvents";
 import { SceneNames } from "../enums/Scenes";
@@ -14,7 +14,7 @@ export default class BootScene extends Phaser.Scene {
 
     private init(): void {
         const { width, height } = this.scale.gameSize;
-        const btn = new NinePatchButton(this, getSellButtonConfig());
+        const btn = new Button(this, getSellButtonConfig());
         btn.setPosition(width / 2, height / 2);
         this.add.existing(btn);
         btn.on(ButtonEvents.Up, () => {
@@ -26,6 +26,6 @@ export default class BootScene extends Phaser.Scene {
     }
 
     private create(): void {
-        // this.scene.start("MainScene");
+        //
     }
 }

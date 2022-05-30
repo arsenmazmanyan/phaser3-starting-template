@@ -1,3 +1,4 @@
 export const assets: AssetNameAndPath[] = [
-    { name: "with current audio", path: "assets/uncompressed/with current audio.png" },
+    { name: "bkg", path: "assets/uncompressed/bkg.jpg" },
+    { name: "popup-bkg", path: "assets/uncompressed/popup-bkg.png" },
 ];

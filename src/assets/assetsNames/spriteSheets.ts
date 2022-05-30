@@ -1,1 +1,1 @@
-export const spriteSheets: string[] = ["buttons", "items"];
+export const spriteSheets: string[] = ["buttons", "game-ui"];

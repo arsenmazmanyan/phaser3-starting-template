@@ -8,7 +8,7 @@ const assetsPath = join(srcPath, "assets");
 const dir = ["sd", "md", "hd"];
 
 const paths = {
-    imgs: {
+    images: {
         path: join(assetsPath, "img"),
         name: "img",
     },
@@ -74,7 +74,7 @@ function findFileWithExtension(array, extension) {
 async function generateSpriteSheet(data, name) {
     const assets = await Promise.all(
         data.map(async (key) => {
-            const contents = await fs.readFile(join(paths.imgs.path, name, key));
+            const contents = await fs.readFile(join(paths.images.path, name, key));
             return { path: key, contents };
         }),
     );
@@ -125,7 +125,7 @@ async function emptySpriteSheetFolder() {
 }
 
 async function generateAtlases() {
-    const { path } = paths.imgs;
+    const { path } = paths.images;
     const spriteSheetNames = await fs.readdir(path, "utf8");
     for (let s of spriteSheetNames) {
         const arr = await getFolderContent(join(path, s), true, s);
@@ -201,4 +201,4 @@ async function start() {
     console.log("asset generation complete");
 }
 
-start();
+await start();

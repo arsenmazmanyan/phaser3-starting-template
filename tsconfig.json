@@ -16,7 +16,11 @@
         "strictPropertyInitialization": false,
 
         "moduleResolution": "node",
-        "typeRoots": ["@types", "node_modules/@types", "node_module/phaser/types"],
+        "typeRoots": [
+            "@types",
+            "node_modules/@types",
+            "node_module/phaser/types"
+        ],
         "lib": ["dom", "esnext"]
     },
     "exclude": ["node_modules", "webpack", "dist", "nodeScripts"]

@@ -1,20 +1,27 @@
-import { NinePatchButton } from "../buttons/NinePatchButton";
-import { getBlueButtonConfig } from "../configs/BlueBtnConfig";
-import { ButtonEvents } from "../enums/ButtonEvents";
+import { CounterComponent } from "../components/CounterComponent";
 
 export class UIView extends Phaser.GameObjects.Container {
+    private counter: CounterComponent;
+
     public constructor(public scene) {
         super(scene);
         this.init();
     }
 
-    private init(): void {
-        const btn = new NinePatchButton(this.scene, getBlueButtonConfig());
-        btn.setPosition(btn.width / 2 + 200, btn.height / 2 + 100);
-        this.add(btn);
+    public updateCounter(): void {
+        this.counter.updateRounds();
+    }
 
-        btn.on(ButtonEvents.Up, () => {
-            btn.setInteractivity(btn.isDisabled, true);
+    private init(): void {
+        this.initCounter();
+    }
+
+    private initCounter(): void {
+        this.counter = new CounterComponent(this.scene);
+        this.counter.setPosition(300, 100);
+        this.counter.on("shopPopup", (rounds: number) => {
+            this.emit("showPopup", rounds);
         });
+        this.add(this.counter);
     }
 }

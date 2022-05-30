@@ -50,7 +50,7 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
         }
     }
 
-    protected initState(_config: any, _stateName?: ButtonStateNames): any {
+    protected initState(_config: any, _stateName: ButtonStateNames): any {
         throw new Error("implement initState function in the class");
     }
 

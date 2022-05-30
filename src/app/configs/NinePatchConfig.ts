@@ -24,13 +24,13 @@ export const getSellBtnPatchesConfig = (state: string): AssetPatchesConfig => {
     };
 };
 
-export const getBlueBtnPatchesConfig = (state: string): AssetPatchesConfig => {
+export const getColoredBtnPatchesConfig = (color: string, state: string): AssetPatchesConfig => {
     return {
         key: "buttons",
-        frame: `blue/${state}.png`,
+        frame: `${color}/${state}.png`,
         patchesConfig: {
-            top: 65,
-            bottom: 76,
+            top: 68,
+            bottom: 68,
             left: 42,
             right: 42,
         },

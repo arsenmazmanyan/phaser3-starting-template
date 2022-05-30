@@ -1,0 +1,40 @@
+{
+	"textures": [
+		{
+			"image": "game-ui.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 812,
+				"h": 246
+			},
+			"scale": 2,
+			"frames": [
+				{
+					"filename": "counter-bkg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 800,
+						"h": 234
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 800,
+						"h": 234
+					},
+					"frame": {
+						"x": 6,
+						"y": 6,
+						"w": 800,
+						"h": 234
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://github.com/odrick/free-tex-packer-core",
+		"version": "0.3.4"
+	}
+}
