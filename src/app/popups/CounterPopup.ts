@@ -1,5 +1,6 @@
 import { Button } from "../buttons/Button";
-import { getRandomButtonConfig, getRedButtonConfig } from "../configs/RedBtnConfig";
+import { getRedButtonConfig } from "../configs/RedBtnConfig";
+import { ButtonEvents } from "../enums/ButtonEvents";
 
 export class CounterPopup extends Phaser.GameObjects.Container {
     private bkg: Phaser.GameObjects.Sprite;
@@ -19,6 +20,7 @@ export class CounterPopup extends Phaser.GameObjects.Container {
     }
 
     public hide(force = false): Phaser.Tweens.Tween | undefined {
+        this.okBtn.setInteractivity(false);
         if (force) {
             this.setVisible(false);
             this.setScale(0);
@@ -32,13 +34,16 @@ export class CounterPopup extends Phaser.GameObjects.Container {
             onComplete: () => this.setVisible(false),
         });
     }
+
     public show(rounds: number): Phaser.Tweens.Tween {
         this.updateRounds(rounds);
+        this.okBtn.setInteractivity(true);
         return this.scene.add.tween({
             targets: this,
             scale: 1,
             duration: 300,
             onStart: () => this.setVisible(true),
+            onComplete: () => this.okBtn.setInteractivity(true),
         });
     }
 
@@ -58,10 +63,11 @@ export class CounterPopup extends Phaser.GameObjects.Container {
     private initOkBtn(): void {
         this.okBtn = new Button(this.scene, getRedButtonConfig());
         this.okBtn.setPosition(0, 100);
-        // this.add(this.okBtn);
-
-        const btn = new Button(this.scene, getRandomButtonConfig());
-        this.add(btn);
+        this.okBtn.setInteractivity(true);
+        this.okBtn.on(ButtonEvents.Up, () => {
+            this.emit("okBtnClicked");
+        });
+        this.add(this.okBtn);
     }
 
     private initMainLabel(): void {

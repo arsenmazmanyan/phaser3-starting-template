@@ -1,5 +1,7 @@
+import { IocContext } from "power-di";
 import * as Stats from "stats.js";
 import { SceneNames } from "../enums/Scenes";
+import { PopupService } from "../services/PopupService";
 import { ForegroundView } from "../views/ForegroundView";
 import { GameView } from "../views/GameView";
 import { UIView } from "../views/UIView";
@@ -13,6 +15,7 @@ export default class MainScene extends Phaser.Scene {
     }
 
     private init(): void {
+        this.initServices();
         this.initGameView();
         this.initUIView();
         this.initForegroundView();
@@ -34,12 +37,20 @@ export default class MainScene extends Phaser.Scene {
 
     private initForegroundView(): void {
         this.foregroundView = new ForegroundView(this);
+        this.foregroundView.on("counterPopupClosed", () => {
+            this.gameView.runRacoon();
+        });
         this.add.existing(this.foregroundView);
+    }
+
+    private initServices(): void {
+        const popupService = IocContext.DefaultInstance.get(PopupService);
+        popupService.initialize();
     }
 
     private initStatJS(): void {
         const stats = new Stats();
-        stats.showPanel(2);
+        stats.showPanel(0);
         const update = (): void => {
             stats.begin();
             stats.end();

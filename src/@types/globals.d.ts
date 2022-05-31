@@ -34,7 +34,7 @@ type ButtonHitAreaConfig = {
 };
 
 type StateConfig = {
-    bkg: INinePatchConfig;
+    bkg: INinePatchConfig | SpriteConfig;
     tint?: number;
     text?: TextConfig;
     icon?: SpriteConfig;

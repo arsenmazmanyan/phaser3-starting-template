@@ -1,15 +1,15 @@
 import { INinePatchConfig } from "@koreez/phaser3-ninepatch";
+import { ButtonStateNames } from "../enums/ButtonStateNames";
 import { getColoredBtnPatchesConfig } from "./NinePatchConfig";
 import { getRedBtnTextConfig } from "./TextConfig";
-import { ButtonStateNames } from "../enums/ButtonStateNames";
 
-export const getRedBtnNinePatchConfig = (state: string): INinePatchConfig => {
+export const getRedBtnNinePatchConfig = (state: string, key = "red"): INinePatchConfig => {
     return {
         x: 0,
         y: 0,
-        width: 150,
-        height: 100,
-        ...getColoredBtnPatchesConfig("red", state),
+        width: 100,
+        height: 72,
+        ...getColoredBtnPatchesConfig(key, state),
     };
 };
 
@@ -27,6 +27,10 @@ export function getRedButtonConfig(): NinePatchButtonConfig {
             },
             over: {
                 bkg: getRedBtnNinePatchConfig(ButtonStateNames.Over),
+                text,
+            },
+            disabled: {
+                bkg: getRedBtnNinePatchConfig(ButtonStateNames.Disabled, "blue"),
                 text,
             },
         },

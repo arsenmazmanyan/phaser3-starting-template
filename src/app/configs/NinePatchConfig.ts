@@ -29,10 +29,10 @@ export const getColoredBtnPatchesConfig = (color: string, state: string): AssetP
         key: "buttons",
         frame: `${color}/${state}.png`,
         patchesConfig: {
-            top: 68,
-            bottom: 68,
-            left: 42,
-            right: 42,
+            top: 24,
+            bottom: 24,
+            left: 15,
+            right: 15,
         },
     };
 };

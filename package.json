@@ -34,6 +34,7 @@
         "fork-ts-checker-webpack-plugin": "^6.5.2",
         "free-tex-packer-core": "^0.3.4",
         "html-webpack-plugin": "^5.5.0",
+        "power-di": "^2.4.18",
         "prettier": "^2.6.2",
         "stats.js": "^0.17.0",
         "style-loader": "^3.3.1",
