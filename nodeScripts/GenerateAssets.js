@@ -60,6 +60,10 @@ function getFileNameFromPath(path) {
     return path.slice(path.lastIndexOf("/") + 1, path.lastIndexOf("."));
 }
 
+function getFileNameWithExtension(path) {
+    return path.slice(path.lastIndexOf("/") + 1, path.length);
+}
+
 function getFileExtensionFromPath(path) {
     return path.slice(path.lastIndexOf(".") + 1, path.length);
 }
@@ -141,7 +145,7 @@ async function generateUncompressedSprites() {
     const { path } = paths.uncompressed;
     const arr = await getFolderContent(path, true);
     const objArr = arr.map((el) => {
-        const name = getFileNameFromPath(el);
+        const name = getFileNameWithExtension(el);
         return { name, path: el };
     });
     const file = join(assetsPath, "assetsNames/assets.ts");
@@ -154,7 +158,7 @@ async function generateAudioAssets() {
     const { path } = paths.audio;
     const arr = await getFolderContent(path, true);
     const objArr = arr.map((el) => {
-        const name = getFileNameFromPath(el);
+        const name = getFileNameWithExtension(el);
         return { name, path: el };
     });
     const file = join(assetsPath, "assetsNames/audio.ts");

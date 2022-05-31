@@ -51,7 +51,7 @@ export class CounterPopup extends Phaser.GameObjects.Container {
     }
 
     private initBkg(): void {
-        this.bkg = this.scene.add.sprite(0, 0, "popup-bkg");
+        this.bkg = this.scene.add.sprite(0, 0, "popup-bkg.png");
         this.add(this.bkg);
     }
 

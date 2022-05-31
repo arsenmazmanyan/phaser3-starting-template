@@ -14,7 +14,7 @@ export class GameView extends Phaser.GameObjects.Container {
 
     private initBkg(): void {
         const { width, height } = this.scene.scale.gameSize;
-        this.bkg = this.scene.add.sprite(width / 2, height / 2, "bkg");
+        this.bkg = this.scene.add.sprite(width / 2, height / 2, "bkg.jpg");
     }
 
     private initSpine(): void {
