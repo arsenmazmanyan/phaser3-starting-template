@@ -9,39 +9,8 @@ export class ForegroundView extends Phaser.GameObjects.Container {
         this.init();
     }
 
-    public showPopup(rounds: number): void {
-        this.modal.setVisible(true);
-        this.showRoundsPopup(rounds);
-    }
-
     private init(): void {
-        this.initModal();
-        this.initRoundsPopup();
-    }
-
-    private showRoundsPopup(rounds: number): void {
-        const tw = this.counterPopup.show(rounds);
-        tw.on("complete", () => {
-            setTimeout(() => {
-                this.hideCounterPopup();
-            }, 1000);
-        });
-    }
-
-    private hideCounterPopup(): void {
-        const tw = this.counterPopup.hide();
-        if (tw) {
-            tw.on("complete", () => {
-                this.modal.setVisible(false);
-            });
-        }
-    }
-
-    private initRoundsPopup(): void {
-        const { width, height } = this.scene.scale.gameSize;
-        this.counterPopup = new CounterPopup(this.scene);
-        this.counterPopup.setPosition(width / 2, height / 2);
-        this.add(this.counterPopup);
+        //
     }
 
     private initModal(): void {

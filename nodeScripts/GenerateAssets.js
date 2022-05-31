@@ -201,4 +201,4 @@ async function start() {
     console.log("asset generation complete");
 }
 
-await start();
+start();

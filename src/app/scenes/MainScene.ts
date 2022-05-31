@@ -29,9 +29,6 @@ export default class MainScene extends Phaser.Scene {
 
     private initUIView(): void {
         this.uiView = new UIView(this);
-        this.uiView.on("showPopup", (rounds: number) => {
-            this.foregroundView.showPopup(rounds);
-        });
         this.add.existing(this.uiView);
     }
 

@@ -19,9 +19,6 @@ export class UIView extends Phaser.GameObjects.Container {
     private initCounter(): void {
         this.counter = new CounterComponent(this.scene);
         this.counter.setPosition(300, 100);
-        this.counter.on("shopPopup", (rounds: number) => {
-            this.emit("showPopup", rounds);
-        });
         this.add(this.counter);
     }
 }

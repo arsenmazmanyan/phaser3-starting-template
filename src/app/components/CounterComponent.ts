@@ -10,9 +10,6 @@ export class CounterComponent extends Phaser.GameObjects.Container {
 
     public updateRounds(): void {
         this.label.setText(`Laps: ${++this.rounds}`);
-        if (this.rounds !== 0 && this.rounds % 2 === 0) {
-            this.emit("shopPopup", this.rounds);
-        }
     }
 
     private init(): void {
