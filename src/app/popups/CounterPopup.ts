@@ -37,7 +37,6 @@ export class CounterPopup extends Phaser.GameObjects.Container {
 
     public show(rounds: number): Phaser.Tweens.Tween {
         this.updateRounds(rounds);
-        this.okBtn.setInteractivity(true);
         return this.scene.add.tween({
             targets: this,
             scale: 1,

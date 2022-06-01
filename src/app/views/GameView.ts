@@ -16,7 +16,7 @@ export class GameView extends Phaser.GameObjects.Container {
         this.racoon.play("Running", true);
         this.scene.tweens.timeline({
             targets: this.racoon,
-            duration: 450,
+            duration: 4500,
             tweens: [
                 {
                     x: 1800,
@@ -29,7 +29,6 @@ export class GameView extends Phaser.GameObjects.Container {
                     onComplete: () => {
                         this.emit("lap");
                         this.racoon.scaleX *= -1;
-                        this.racoon.setToSetupPose();
                         this.racoon.play("Idle", true);
                     },
                 },
@@ -52,6 +51,8 @@ export class GameView extends Phaser.GameObjects.Container {
         this.racoon = this.scene.add.spine(400, 1020, "racoon");
         this.racoon.setScale(0.4);
         this.racoon.play("Idle", true);
+        this.racoon.state.data.setMix("Idle", "Running", 1);
+        this.racoon.state.data.setMix("Running", "Idle", 1);
         this.runRacoon();
     }
 
