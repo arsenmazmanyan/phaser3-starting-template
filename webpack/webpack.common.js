@@ -46,7 +46,13 @@ module.exports = {
             filename: "index.html",
         }),
         new CopyWebpackPlugin({
-            patterns: [{ from: "./src/assets", to: "assets" }],
+            patterns: [
+                { from: "./src/assets/assetsNames", to: "assets/assetsNames" },
+                { from: "./src/assets/audio", to: "assets/audio" },
+                { from: "./src/assets/spines", to: "assets/spines" },
+                { from: "./src/assets/uncompressed", to: "assets/uncompressed" },
+                { from: "./src/assets/spriteSheets", to: "assets/spriteSheets" },
+            ],
         }),
     ],
 };
