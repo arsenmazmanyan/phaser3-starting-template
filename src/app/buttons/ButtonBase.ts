@@ -29,7 +29,7 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
         return this.states.disabled ? this.states.disabled.getBounds() : this.states.up.getBounds();
     }
 
-    public updateLabel(label: string): void {
+    public updateLabel(label: string | number): void {
         // changes label ON ALL STATES
         Object.keys(this.states).forEach((el) => {
             this.states[el]?.updateLabel(label);
@@ -50,7 +50,7 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
         }
     }
 
-    protected initState(_config: any, _stateName: ButtonStateNames): any {
+    protected initState(_config: any, _stateName: ButtonStateNames): void {
         throw new Error("implement initState function in the class");
     }
 

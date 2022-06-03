@@ -17,8 +17,8 @@ export class ButtonState extends Phaser.GameObjects.Container {
         return new Phaser.Geom.Rectangle(0, 0, width, height);
     }
 
-    public updateLabel(label: string): void {
-        this.text?.setText(label);
+    public updateLabel(label: string | number): void {
+        this.text?.setText(label.toString());
     }
 
     private initialize({ bkg, tint, icon, text }: StateConfig): void {

@@ -19,7 +19,10 @@ export default class MainScene extends Phaser.Scene {
         this.initGameView();
         this.initUIView();
         this.initForegroundView();
-        this.initStatJS();
+
+        if (process.env.NODE_ENV !== "production") {
+            this.initStatJS();
+        }
     }
 
     private initGameView(): void {
