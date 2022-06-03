@@ -67,9 +67,9 @@ function getFileExtensionFromPath(path) {
     return path.slice(path.lastIndexOf(".") + 1, path.length);
 }
 
-function findFileWithExtension(array, extension) {
-    for (const el of array) {
-        if (getFileExtensionFromPath(el) === extension) return el;
+function findFileWithExtension(files, extension) {
+    for (const f of files) {
+        if (getFileExtensionFromPath(f) === extension) return f;
     }
     return null;
 }
@@ -152,13 +152,13 @@ async function generateUncompressedSprites() {
 
 async function generateAudioAssets() {
     const { path } = paths.audio;
-    const arr = await getFolderContent(path, true);
-    const objArr = arr.map((el) => {
+    const files = await getFolderContent(path, true);
+    const filesNamesAndPath = files.map((el) => {
         const name = getFileNameWithExtension(el);
         return { name, path: el };
     });
     const file = join(assetsPath, "assetsNames/audio.ts");
-    const data = `export const audioAssets: AssetNameAndPath[] = ${JSON.stringify(objArr)}`;
+    const data = `export const audioAssets: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
     await fs.writeFile(file, data);
     await runPrettierOn(file);
 }
