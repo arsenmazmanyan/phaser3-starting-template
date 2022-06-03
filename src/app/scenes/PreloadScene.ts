@@ -36,13 +36,8 @@ export default class PreloadScene extends Phaser.Scene {
 
     private loadSpriteSheets(): void {
         if (spriteSheets.length === 0) return;
-        const assetDir = "sd";
         spriteSheets.forEach((el) => {
-            this.load.atlas(
-                el,
-                `./assets/spriteSheets/${assetDir}/${el}.png`,
-                `./assets/spriteSheets/${assetDir}/${el}.json`,
-            );
+            this.load.atlas(el, `./assets/spriteSheets/${el}.png`, `./assets/spriteSheets/${el}.json`);
         });
     }
 

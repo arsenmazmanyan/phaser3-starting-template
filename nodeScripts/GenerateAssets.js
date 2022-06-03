@@ -83,16 +83,15 @@ async function generateSpriteSheet(data, name) {
         }),
     );
     options.textureName = name;
-    for (let i = 1; i <= 3; i++) {
-        options.scale = i;
-        texturePacker(assets, options, async (files, error) => {
-            if (error) throw error;
-            for (let item of files) {
-                const itemPath = join(assetsPath, `spriteSheets/${dir[i - 1]}/${item.name}`);
-                await fs.appendFile(itemPath, item.buffer);
-            }
-        });
-    }
+    // for (let i = 1; i <= 3; i++) {
+    texturePacker(assets, options, async (files, error) => {
+        if (error) throw error;
+        for (let item of files) {
+            const itemPath = join(assetsPath, `spriteSheets/${item.name}`);
+            await fs.appendFile(itemPath, item.buffer);
+        }
+    });
+    // }
 }
 
 async function getFolderContent(folderPath, shorterPath = true, shortenFromFolder = "src") {
