@@ -5,7 +5,6 @@ const { exec } = require("child_process");
 
 const srcPath = join(__dirname, "../src");
 const assetsPath = join(srcPath, "assets");
-const dir = ["sd", "md", "hd"];
 
 const paths = {
     images: {
