@@ -31,8 +31,8 @@ const paths = {
 
 let options = {
     textureName: "",
-    width: 2048,
-    height: 2048,
+    width: 4096,
+    height: 4096,
     quality: 80,
     scale: 1,
     fixedSize: false,
