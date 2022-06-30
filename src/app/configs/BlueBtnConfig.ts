@@ -12,7 +12,7 @@ export const getBlueBtnNinePatchConfig = (state: string): INinePatchConfig => {
     };
 };
 
-export function getBlueButtonConfig(): NinePatchButtonConfig {
+export function getBlueButtonConfig(): ButtonConfig {
     const enabledText = getBlueBtnTextConfig(true);
     const disabledText = getBlueBtnTextConfig(false);
     return {

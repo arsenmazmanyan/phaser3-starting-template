@@ -26,13 +26,6 @@ type SpriteConfig = {
     scaleY?: number;
 };
 
-type ButtonHitAreaConfig = {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-};
-
 type StateConfig = {
     bkg: INinePatchConfig | SpriteConfig;
     tint?: number;
@@ -47,7 +40,12 @@ type ButtonStates = {
     disabled?: StateConfig;
 };
 
-type NinePatchButtonConfig = {
+type ButtonConfig = {
     states: ButtonStates;
     hitArea?: ButtonHitAreaConfig;
+};
+
+type ButtonHitAreaConfig = {
+    area: any;
+    callback: any;
 };

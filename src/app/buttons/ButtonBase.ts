@@ -12,10 +12,10 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
     protected isInteractive: boolean;
     protected activeState: ButtonStateNames;
 
-    public constructor(public readonly scene, { states, inputArea }: any) {
+    public constructor(public readonly scene, { states, hitArea }: ButtonConfig) {
         super(scene);
         this.createStates(states);
-        this.initHitArea(inputArea);
+        this.initHitArea(hitArea);
     }
 
     public get isDisabled(): boolean {
@@ -80,10 +80,8 @@ export abstract class ButtonBase extends Phaser.GameObjects.Container {
     }
 
     private initHitArea(hitArea: ButtonHitAreaConfig | undefined): void {
-        const area = hitArea || this.states.up.getBounds();
-        const { x, y, width, height } = area;
-        const shape = new Phaser.Geom.Rectangle(x, y, width, height);
-        const hitAreaCallback = Phaser.Geom.Rectangle.Contains;
+        const shape = hitArea?.area || this.states.up.getBounds();
+        const hitAreaCallback = hitArea?.callback || Phaser.Geom.Rectangle.Contains;
         this.setInteractive({ hitArea: shape, hitAreaCallback, cursor: "pointer" });
         this.enableInputs();
     }

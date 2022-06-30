@@ -53,7 +53,7 @@ export class GameView extends Phaser.GameObjects.Container {
         this.racoon.play("Idle", true);
         this.racoon.state.data.setMix("Idle", "Running", 1);
         this.racoon.state.data.setMix("Running", "Idle", 1);
-        this.runRacoon();
+        // this.runRacoon();
     }
 
     private initServices(): void {

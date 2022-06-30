@@ -14,7 +14,7 @@ export class ForegroundView extends Phaser.GameObjects.Container {
 
     private init(): void {
         this.initModal();
-        this.initCounterPopup();
+        // this.initCounterPopup();
         this.initServices();
     }
 

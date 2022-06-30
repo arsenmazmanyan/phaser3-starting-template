@@ -13,7 +13,7 @@ export const getRedBtnNinePatchConfig = (state: string, key = "red"): INinePatch
     };
 };
 
-export function getRedButtonConfig(): NinePatchButtonConfig {
+export function getRedButtonConfig(): ButtonConfig {
     const text = getRedBtnTextConfig();
     return {
         states: {
@@ -37,7 +37,7 @@ export function getRedButtonConfig(): NinePatchButtonConfig {
     };
 }
 
-export function getRandomButtonConfig(): NinePatchButtonConfig {
+export function getRandomButtonConfig(): ButtonConfig {
     const text = getRedBtnTextConfig();
     return {
         states: {

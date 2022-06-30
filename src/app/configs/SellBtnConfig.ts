@@ -1,6 +1,6 @@
 import { INinePatchConfig } from "@koreez/phaser3-ninepatch";
 import { getSellCheckMarkIconBtnIconConfig } from "./IconConfig";
-import { getSellBtnPatchesConfig } from "./NinePatchConfig";
+import { ButtonCallback, getSellBtnPatchesConfig } from "./NinePatchConfig";
 import { getSellBtnTextConfig } from "./TextConfig";
 
 const getSellBtnNinePatchConfig = (state: string): INinePatchConfig => {
@@ -13,7 +13,7 @@ const getSellBtnNinePatchConfig = (state: string): INinePatchConfig => {
     };
 };
 
-export function getSellButtonConfig(): NinePatchButtonConfig {
+export function getSellButtonConfig(): ButtonConfig {
     const enabledText = getSellBtnTextConfig(true);
     const disabledText = getSellBtnTextConfig(false);
     const icon = getSellCheckMarkIconBtnIconConfig(-140);
@@ -39,5 +39,6 @@ export function getSellButtonConfig(): NinePatchButtonConfig {
                 text: disabledText,
             },
         },
+        hitArea: { area: new Phaser.Geom.Circle(270, 72, 144), callback: ButtonCallback.Circle },
     };
 }

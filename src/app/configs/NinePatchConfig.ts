@@ -1,10 +1,14 @@
 import { INinePatchConfig, NinePatch } from "@koreez/phaser3-ninepatch";
+import { AssetPatchesConfig } from "../interfaces/AssetPatchConfig";
 
-interface AssetPatchesConfig {
-    key: string;
-    frame?: string | number;
-    patchesConfig?: any;
-}
+export const ButtonCallback = {
+    // ButtonCallback must correspond to the Area. Circle -> ButtonCallback.Circle
+    Rectangle: Phaser.Geom.Rectangle.Contains,
+    Circle: Phaser.Geom.Circle.Contains,
+    Ellipse: Phaser.Geom.Ellipse.Contains,
+    Triangle: Phaser.Geom.Triangle.Contains,
+    Polygon: Phaser.Geom.Polygon.Contains,
+};
 
 export const makeNinePatch = (scene: Phaser.Scene, config: INinePatchConfig): NinePatch => {
     const { x = 0, y = 0, width, height, key, frame, patchesConfig } = config;
