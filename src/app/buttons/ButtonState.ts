@@ -1,6 +1,6 @@
 import { NinePatch } from "@koreez/phaser3-ninepatch";
-import { makeNinePatch } from "../configs/NinePatchConfig";
 import { ButtonStateNames } from "../enums/ButtonStateNames";
+import { UIService } from "../services/UIService";
 
 export class ButtonState extends Phaser.GameObjects.Container {
     private bkg: NinePatch | Phaser.GameObjects.Sprite;
@@ -29,7 +29,9 @@ export class ButtonState extends Phaser.GameObjects.Container {
 
     private setBkg(bkgConfig, tint): void {
         this.bkg =
-            bkgConfig.width && bkgConfig.height ? makeNinePatch(this.scene, bkgConfig) : this.makeImageBkg(bkgConfig);
+            bkgConfig.width && bkgConfig.height
+                ? UIService.makeNinePatch(this.scene, bkgConfig)
+                : this.makeImageBkg(bkgConfig);
         tint && (this.bkg.tint = tint);
         this.add(this.bkg);
     }
