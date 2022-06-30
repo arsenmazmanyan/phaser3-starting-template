@@ -1,12 +1,7 @@
-import { IocContext } from "power-di";
-import { PopupServiceEvents } from "../enums/PopupServiceEvents";
-import { PopupService } from "../services/PopupService";
-
 export class CounterComponent extends Phaser.GameObjects.Container {
     private bkg: Phaser.GameObjects.Sprite;
     private label: Phaser.GameObjects.Text;
     private rounds = 0;
-    private popupService: PopupService;
 
     public constructor(scene) {
         super(scene);
@@ -15,14 +10,11 @@ export class CounterComponent extends Phaser.GameObjects.Container {
 
     public updateRounds(): void {
         this.label.setText(`Laps: ${++this.rounds}`);
-        this.popupService.event$.emit(PopupServiceEvents.RoundComplete, this.rounds);
     }
 
     private init(): void {
         this.initBkg();
         this.initLabel();
-
-        this.popupService = IocContext.DefaultInstance.get(PopupService);
     }
 
     private initBkg(): void {

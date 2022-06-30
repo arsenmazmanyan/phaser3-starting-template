@@ -7,7 +7,6 @@ export class CounterPopup extends Phaser.GameObjects.Container {
     private label: Phaser.GameObjects.Text;
     private roundsLabel: Phaser.GameObjects.Text;
     private okBtn: Button;
-    private rounds = 0;
 
     public constructor(scene) {
         super(scene);
@@ -15,7 +14,6 @@ export class CounterPopup extends Phaser.GameObjects.Container {
     }
 
     public updateRounds(rounds: number): void {
-        this.rounds = rounds;
         this.roundsLabel.setText(`${rounds} rounds`);
     }
 

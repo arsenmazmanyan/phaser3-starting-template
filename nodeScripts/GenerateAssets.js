@@ -8,8 +8,8 @@ const assetsPath = join(srcPath, "assets");
 
 const paths = {
     images: {
-        path: join(assetsPath, "img"),
-        name: "img",
+        path: join(assetsPath, "images"),
+        name: "images",
     },
     audio: {
         path: join(assetsPath, "audio"),
@@ -26,6 +26,14 @@ const paths = {
     spriteSheets: {
         path: join(assetsPath, "spriteSheets"),
         name: "spriteSheets",
+    },
+    shaders: {
+        path: join(assetsPath, "shaders"),
+        name: "shaders",
+    },
+    videos: {
+        path: join(assetsPath, "video"),
+        name: "videos",
     },
 };
 
@@ -163,6 +171,32 @@ async function generateAudioAssets() {
     await runPrettierOn(file);
 }
 
+async function generateShaders() {
+    const { path } = paths.shaders;
+    const files = await getFolderContent(path, true);
+    const filesNamesAndPath = files.map((el) => {
+        const name = getFileNameWithExtension(el);
+        return { name, path: el };
+    });
+    const file = join(assetsPath, "assetsNames/shaders.ts");
+    const data = `export const shaders: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
+    await fs.writeFile(file, data);
+    await runPrettierOn(file);
+}
+
+async function generateVideos() {
+    const { path } = paths.videos;
+    const files = await getFolderContent(path, true);
+    const filesNamesAndPath = files.map((el) => {
+        const name = getFileNameWithExtension(el);
+        return { name, path: el };
+    });
+    const file = join(assetsPath, "assetsNames/videos.ts");
+    const data = `export const videos: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
+    await fs.writeFile(file, data);
+    await runPrettierOn(file);
+}
+
 async function generateSpines() {
     const { path } = paths.spines;
     const spines = await fs.readdir(path, "utf8");
@@ -198,7 +232,12 @@ async function start() {
     await generateAudioAssets();
     console.log("generating spines");
     await generateSpines();
+    console.log("generating shaders");
+    await generateShaders();
+    console.log("generating videos");
+    await generateVideos();
     console.log("asset generation complete");
+    console.log("running the game");
 }
 
 start();

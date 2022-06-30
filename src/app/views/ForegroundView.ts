@@ -1,9 +1,9 @@
 import { IocContext } from "power-di";
-import { PopupServiceEvents } from "../enums/PopupServiceEvents";
 import { CounterPopup } from "../popups/CounterPopup";
 import { PopupService } from "../services/PopupService";
 
 export class ForegroundView extends Phaser.GameObjects.Container {
+    private popupService = IocContext.DefaultInstance.get(PopupService);
     private modal: Phaser.GameObjects.Sprite;
     private counterPopup: CounterPopup;
 
@@ -12,10 +12,13 @@ export class ForegroundView extends Phaser.GameObjects.Container {
         this.init();
     }
 
+    public showCounterPopup(): void {
+        this.initCounterPopup();
+        this.counterPopup.show(0 | (Math.random() * 100));
+    }
+
     private init(): void {
         this.initModal();
-        // this.initCounterPopup();
-        this.initServices();
     }
 
     private initCounterPopup(): void {
@@ -24,44 +27,19 @@ export class ForegroundView extends Phaser.GameObjects.Container {
         this.counterPopup.setPosition(width / 2, height / 2);
         this.counterPopup.on("okBtnClicked", () => {
             this.counterPopup.hide()?.on("complete", () => {
+                this.counterPopup.destroy();
                 this.emit("counterPopupClosed");
             });
         });
         this.add(this.counterPopup);
     }
 
-    private initServices(): void {
-        this.initPopupService();
-    }
-
-    private initPopupService(): void {
-        const popupService = IocContext.DefaultInstance.get(PopupService);
-        popupService.event$.on(PopupServiceEvents.RoundComplete, (rounds: number) => {
-            this.showCounterPopup(rounds);
-        });
-    }
-
-    private showCounterPopup(rounds: number): void {
-        this.counterPopup.show(rounds);
-    }
-
     private initModal(): void {
-        const modalTextureName = "ModalBkgImage";
-        const { width, height } = this.scene.scale.gameSize;
-        const graph = this.scene.make.graphics({
-            x: 0,
-            y: 0,
-            add: false,
-        });
-        graph.fillStyle(0x000000, 0.4);
-        graph.fillRect(0, 0, width, height);
-        graph.closePath();
-        graph.generateTexture(modalTextureName, width, height);
-        graph.destroy();
-        this.modal = this.scene.add.sprite(0, 0, modalTextureName);
-        this.modal.setOrigin(0);
-        this.modal.setInteractive();
-        this.modal.setVisible(false);
-        this.add(this.modal);
+        // const { width, height } = this.scene.scale.gameSize;
+        // this.modal = this.scene.add.sprite(0, 0, modalTextureName);
+        // this.modal.setOrigin(0);
+        // this.modal.setInteractive();
+        // this.modal.setVisible(false);
+        // this.add(this.modal);
     }
 }

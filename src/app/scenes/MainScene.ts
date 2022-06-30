@@ -10,6 +10,8 @@ export default class MainScene extends Phaser.Scene {
     private gameView: GameView;
     private uiView: UIView;
     private foregroundView: ForegroundView;
+    private popupService: PopupService;
+
     public constructor() {
         super({ key: SceneNames.Main });
     }
@@ -27,9 +29,6 @@ export default class MainScene extends Phaser.Scene {
 
     private initGameView(): void {
         this.gameView = new GameView(this);
-        this.gameView.on("lap", () => {
-            this.uiView.updateCounter();
-        });
         this.add.existing(this.gameView);
     }
 
@@ -40,15 +39,14 @@ export default class MainScene extends Phaser.Scene {
 
     private initForegroundView(): void {
         this.foregroundView = new ForegroundView(this);
-        this.foregroundView.on("counterPopupClosed", () => {
-            this.gameView.runRacoon();
-        });
         this.add.existing(this.foregroundView);
+
+        this.popupService.view = this.foregroundView;
     }
 
     private initServices(): void {
-        const popupService = IocContext.DefaultInstance.get(PopupService);
-        popupService.initialize();
+        this.popupService = IocContext.DefaultInstance.get(PopupService);
+        this.popupService.initialize();
     }
 
     private initStatJS(): void {

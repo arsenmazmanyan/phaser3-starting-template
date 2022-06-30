@@ -49,9 +49,12 @@ module.exports = {
             patterns: [
                 { from: "./src/assets/assetsNames", to: "assets/assetsNames" },
                 { from: "./src/assets/audio", to: "assets/audio" },
-                { from: "./src/assets/spines", to: "assets/spines" },
                 { from: "./src/assets/uncompressed", to: "assets/uncompressed" },
                 { from: "./src/assets/spriteSheets", to: "assets/spriteSheets" },
+                // PLEASE UNCOMMENT THESE, IF YOU NEED THEM
+                // { from: "./src/assets/spines", to: "assets/spines" },
+                // { from: "./src/assets/shaders", to: "assets/shaders" },
+                // { from: "./src/assets/video", to: "assets/video" },
             ],
         }),
     ],

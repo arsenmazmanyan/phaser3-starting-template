@@ -1,7 +1,9 @@
 import { assets } from "../../assets/assetsNames/assets";
 import { audioAssets } from "../../assets/assetsNames/audio";
+import { shaders } from "../../assets/assetsNames/shaders";
 import { spines } from "../../assets/assetsNames/spines";
 import { spriteSheets } from "../../assets/assetsNames/spriteSheets";
+import { videos } from "../../assets/assetsNames/videos";
 import { SceneNames } from "../enums/Scenes";
 
 export default class PreloadScene extends Phaser.Scene {
@@ -15,6 +17,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.loadSpriteSheets();
         this.loadAudio();
         this.loadSpines();
+        this.loadShaders();
     }
 
     private init(): void {
@@ -46,6 +49,22 @@ export default class PreloadScene extends Phaser.Scene {
         audioAssets.forEach((el) => {
             const { name, path } = el;
             this.load.audio(name, path);
+        });
+    }
+
+    private loadVideo(): void {
+        if (videos.length === 0) return;
+        audioAssets.forEach((el) => {
+            const { name, path } = el;
+            this.load.video(name, path);
+        });
+    }
+
+    private loadShaders(): void {
+        if (shaders.length === 0) return;
+        shaders.forEach((el) => {
+            const { name, path } = el;
+            this.load.glsl(name, path);
         });
     }
 
