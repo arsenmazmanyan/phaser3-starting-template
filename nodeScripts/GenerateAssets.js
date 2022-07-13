@@ -75,6 +75,14 @@ function getFileExtensionFromPath(path) {
     return path.slice(path.lastIndexOf(".") + 1, path.length);
 }
 
+function isImage(filePath) {
+    return /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(filePath);
+}
+
+function isVideo(filePath) {
+    return /\.(webm|mpe?g|mp2|mpe|mpv|m4p|m4v|wmv|qt|flv|swf|avchd|ogg|mp4|avi|mov)$/i.test(filePath);
+}
+
 function findFileWithExtension(files, extension) {
     for (const f of files) {
         if (getFileExtensionFromPath(f) === extension) return f;
@@ -134,90 +142,132 @@ async function emptySpriteSheetFolder() {
 
 async function generateAtlases() {
     const { path } = paths.images;
-    const folders = await fs.readdir(path, "utf8");
-    const spriteSheetNames = [];
-    for (const folder of folders) {
-        const folderContent = await getFolderContent(join(path, folder), true, folder);
-        if (folderContent.length === 0) continue;
-        spriteSheetNames.push(folder);
-        await generateSpriteSheet(folderContent, folder);
+    try {
+        const folders = await fs.readdir(path, "utf8");
+        const spriteSheetNames = [];
+        for (const folder of folders) {
+            const folderContent = await getFolderContent(join(path, folder), true, folder);
+            if (folderContent.length === 0) continue;
+            const imageFiles = folderContent.filter((f) => isImage(f));
+            spriteSheetNames.push(folder);
+            await generateSpriteSheet(imageFiles, folder);
+        }
+        const data = `export const spriteSheets: string[] = ${JSON.stringify(spriteSheetNames)}`;
+        const file = join(assetsPath, "assetsNames/spriteSheets.ts");
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
     }
-    const data = `export const spriteSheets: string[] = ${JSON.stringify(spriteSheetNames)}`;
-    const file = join(assetsPath, "assetsNames/spriteSheets.ts");
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
 }
 
 async function generateUncompressedSprites() {
     const { path } = paths.uncompressed;
-    const files = await getFolderContent(path, true);
-    const filesNamesAndPaths = files.map((el) => {
-        const name = getFileNameWithExtension(el);
-        return { name, path: el };
-    });
-    const file = join(assetsPath, "assetsNames/assets.ts");
-    const data = `export const assets: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPaths)}`;
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
+    try {
+        const files = await getFolderContent(path, true);
+        const images = files.filter((f) => isImage(f));
+        let filesNamesAndPaths = [];
+        if (images.length !== 0) {
+            filesNamesAndPaths = images.map((el) => {
+                const name = getFileNameWithExtension(el);
+                return { name, path: el };
+            });
+        }
+        const file = join(assetsPath, "assetsNames/assets.ts");
+        const data = `export const assets: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPaths)}`;
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 
 async function generateAudioAssets() {
     const { path } = paths.audio;
-    const files = await getFolderContent(path, true);
-    const filesNamesAndPath = files.map((el) => {
-        const name = getFileNameWithExtension(el);
-        return { name, path: el };
-    });
-    const file = join(assetsPath, "assetsNames/audio.ts");
-    const data = `export const audioAssets: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
+    try {
+        const files = await getFolderContent(path, true);
+        let filesNamesAndPath = [];
+        if (files.length !== 0) {
+            filesNamesAndPath = files.map((el) => {
+                const name = getFileNameWithExtension(el);
+                return { name, path: el };
+            });
+        }
+        const file = join(assetsPath, "assetsNames/audio.ts");
+        const data = `export const audioAssets: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 
 async function generateShaders() {
     const { path } = paths.shaders;
-    const files = await getFolderContent(path, true);
-    const filesNamesAndPath = files.map((el) => {
-        const name = getFileNameWithExtension(el);
-        return { name, path: el };
-    });
-    const file = join(assetsPath, "assetsNames/shaders.ts");
-    const data = `export const shaders: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
+    try {
+        const shaderFiles = await getFolderContent(path, true);
+        let filesNamesAndPath = [];
+        if (shaderFiles.length !== 0) {
+            filesNamesAndPath = shaderFiles.map((el) => {
+                const name = getFileNameWithExtension(el);
+                return { name, path: el };
+            });
+        }
+        const file = join(assetsPath, "assetsNames/shaders.ts");
+        const data = `export const shaders: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 
 async function generateVideos() {
     const { path } = paths.videos;
-    const files = await getFolderContent(path, true);
-    const filesNamesAndPath = files.map((el) => {
-        const name = getFileNameWithExtension(el);
-        return { name, path: el };
-    });
-    const file = join(assetsPath, "assetsNames/videos.ts");
-    const data = `export const videos: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
+    try {
+        const files = await getFolderContent(path, true);
+        const videoFiles = files.filter((f) => isVideo(f));
+        let filesNamesAndPath = [];
+        if (videoFiles.length !== 0) {
+            filesNamesAndPath = videoFiles.map((el) => {
+                const name = getFileNameWithExtension(el);
+                return { name, path: el };
+            });
+        }
+        const file = join(assetsPath, "assetsNames/videos.ts");
+        const data = `export const videos: AssetNameAndPath[] = ${JSON.stringify(filesNamesAndPath)}`;
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 
 async function generateSpines() {
     const { path } = paths.spines;
-    const spines = await fs.readdir(path, "utf8");
-    const spineFiles = await Promise.all(
-        spines.map(async (s) => {
-            const files = await getFolderContent(join(path, s));
-            return {
-                key: s,
-                jsonURL: findFileWithExtension(files, "json"),
-                atlasURL: findFileWithExtension(files, "atlas"),
-                preMultipliedAlpha: true,
-            };
-        }),
-    );
-    const file = join(assetsPath, "assetsNames/spines.ts");
-    const data = `export const spines: SpineFiles[] = ${JSON.stringify(spineFiles)}`;
-    await fs.writeFile(file, data);
-    await runPrettierOn(file);
+    try {
+        const spines = await fs.readdir(path, "utf8");
+        let spineFiles = [];
+        if (spines.length !== 0) {
+            spineFiles = await Promise.all(
+                spines.map(async (s) => {
+                    const files = await getFolderContent(join(path, s));
+                    return {
+                        key: s,
+                        jsonURL: findFileWithExtension(files, "json"),
+                        atlasURL: findFileWithExtension(files, "atlas"),
+                        preMultipliedAlpha: true,
+                    };
+                }),
+            );
+        }
+        const file = join(assetsPath, "assetsNames/spines.ts");
+        const data = `export const spines: SpineFiles[] = ${JSON.stringify(spineFiles)}`;
+        await fs.writeFile(file, data);
+        await runPrettierOn(file);
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 
 async function runPrettierOn(file) {
