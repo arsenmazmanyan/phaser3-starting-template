@@ -134,10 +134,13 @@ async function emptySpriteSheetFolder() {
 
 async function generateAtlases() {
     const { path } = paths.images;
-    const spriteSheetNames = await fs.readdir(path, "utf8");
-    for (const s of spriteSheetNames) {
-        const arr = await getFolderContent(join(path, s), true, s);
-        await generateSpriteSheet(arr, s);
+    const folders = await fs.readdir(path, "utf8");
+    const spriteSheetNames = [];
+    for (const folder of folders) {
+        const folderContent = await getFolderContent(join(path, folder), true, folder);
+        if (folderContent.length === 0) continue;
+        spriteSheetNames.push(folder);
+        await generateSpriteSheet(folderContent, folder);
     }
     const data = `export const spriteSheets: string[] = ${JSON.stringify(spriteSheetNames)}`;
     const file = join(assetsPath, "assetsNames/spriteSheets.ts");
