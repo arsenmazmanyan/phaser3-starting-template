@@ -2,6 +2,7 @@ const texturePacker = require("free-tex-packer-core");
 const fs = require("fs").promises;
 const { join } = require("path");
 const { exec } = require("child_process");
+const { rejects } = require("assert");
 
 const srcPath = join(__dirname, "../src");
 const assetsPath = join(srcPath, "assets");
@@ -146,6 +147,9 @@ async function generateAtlases() {
         const folders = await fs.readdir(path, "utf8");
         const spriteSheetNames = [];
         for (const folder of folders) {
+            const folderPath = join(path, folder);
+            const stat = await fs.stat(folderPath);
+            if (!stat.isDirectory()) continue;
             const folderContent = await getFolderContent(join(path, folder), true, folder);
             if (folderContent.length === 0) continue;
             const imageFiles = folderContent.filter((f) => isImage(f));
